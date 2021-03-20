@@ -2,7 +2,7 @@ module.exports = {
   purge: {
     enabled: !process.env.ROLLUP_WATCH,
     mode: 'all',
-    content: ['./**/**/*.html', './**/**/*.svelte'],
+    content: ['./src/**/*.html', './src/**/*.svelte'],
 
     options: {
       whitelistPatterns: [/svelte-/],
