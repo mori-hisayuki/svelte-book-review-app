@@ -102,6 +102,32 @@ npm run build
 surge public my-project.surge.sh
 ```
 
+## TailWindCSS Setting
+
+TailWindCSSに必要なPackageをインストールします
+
+```bash
+yarn add tailwindcss postcss autoprefixer
+```
+
+
+
+PostCSS構成にtailwindcssとautoprefixerを追加します。ほとんどの場合、これはプロジェクトのルートにあるpostcss.config.jsファイルですが、.postcssrcファイルまたはpackage.jsonファイルのpostcssキーの場合もあります。
+
+```js:postcss.config.js
+// postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+```
+
+
+
+
+
 ## 参考Repository
 
 [https://github.com/azukiazusa1/svelte-book-review-app](https://github.com/azukiazusa1/svelte-book-review-app)
