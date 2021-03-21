@@ -4,7 +4,6 @@
 
     //$:ラベルが付与された式や文は、変数の更新のたびに再計算される
     $: src = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : 'http://placehold.jp/eeeeee/cccccc/160x120.png?text=No%20Image'
-    console.log(book.volumeInfo )
 
     $: description = book.volumeInfo.description ? `${book.volumeInfo.description.slice(0, 100)}...` : ''
 </script>

@@ -3,21 +3,38 @@
     import Spinner from '../components/Spinner.svelte'
     import BookCard from '../components/BookCard.svelte'
     import RepositoryFactory from '../repositories/repositoryFactory'
+    import InfiniteScroll from 'svelte-infinite-scroll'
     import type { Book } from '../repositories/book/types'
 
     const bookRepository = RepositoryFactory['book']
     let query = ''
+    let startIndex = 0
     let books: Book[] = []
     let promise: Promise<void>
 
 
     const handleSubmit = async () => {
         if(!query.trim()) return
+        startIndex = 0
         promise = getBook()
     }
 
     const getBook = async () => {
-        books = (await bookRepository.query({ query })).items
+        books = (await bookRepository.query({ query, startIndex })).items
+    }
+
+    const handleLoadMore = () => {
+        startIndex += 10
+        console.log('handleLoadMore')
+        promise = getNextPage()
+    }
+
+    const getNextPage = async () => {
+        const nextBooks = (await bookRepository.query({ query, startIndex })).items
+        const bookIds = books.map(book=> book.id)
+        const filterBooks = nextBooks.filter(book => !bookIds.includes(book.id))
+        books = [...books, ...filterBooks]
+        console.log(books.length)
     }
 
 </script>
@@ -34,6 +51,7 @@
             <BookCard {book} />
         {/each}
     </div>
+    <InfiniteScroll window on:loadMore={handleLoadMore} />
     {/if}
     {#await promise}
         <div class='flex justify-center'>
