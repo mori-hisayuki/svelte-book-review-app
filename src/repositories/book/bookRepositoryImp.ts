@@ -1,7 +1,7 @@
 
 import { httpClient } from '../httpClient'
-import { BookRepository } from './bookRepository'
-import { Book, QueryParams, Response } from './types'
+import type { BookRepository } from './bookRepository'
+import type { Book, QueryParams, Response } from './types'
 
 export class BookRepositoryImp implements BookRepository {
 

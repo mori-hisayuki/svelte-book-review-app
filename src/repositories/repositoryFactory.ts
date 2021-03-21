@@ -1,6 +1,6 @@
 import { BookRepository, BookRepositoryImp } from './book'
 
-export type Repositories {
+export type Repositories = {
     ['book']: BookRepository
 }
 
