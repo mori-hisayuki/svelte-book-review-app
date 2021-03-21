@@ -12,7 +12,7 @@ export type Book = {
         publishDate?: string
         description?: string
         publisher?: string
-        imageLink?: {
+        imageLinks?: {
             smallThumbnail: string
             thumbnail: string
         },
