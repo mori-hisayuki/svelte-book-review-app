@@ -28,5 +28,5 @@ export type Book = {
 
 export type QueryParams = {
     query: string
-    startIndex: number
+    startIndex?: number
 }
